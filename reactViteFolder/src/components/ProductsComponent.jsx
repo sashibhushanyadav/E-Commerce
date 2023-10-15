@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
 } from "react-bootstrap";
+import { returnDiscountAmount, returnTotal } from "../utils/helper";
 
 const ProductsComponent = ({ productDetails, deleteHandler, editHandler }) => {
   //   console.log('productDetails', productDetails)
@@ -18,11 +19,11 @@ const ProductsComponent = ({ productDetails, deleteHandler, editHandler }) => {
         ></Card.Img>
       </CardHeader>
       <CardBody>
-        <h2>
+        <h4>
           {productDetails.title.length > 5
             ? productDetails.title.slice(0, 4) + "..."
             : productDetails.title}
-        </h2>
+        </h4>
         <p>
           {productDetails.description.length > 10
             ? productDetails.description.slice(0, 9) + "..."
@@ -36,19 +37,10 @@ const ProductsComponent = ({ productDetails, deleteHandler, editHandler }) => {
           {productDetails.discountPercentage}
         </p>
         <p>
-          <b>Discount Amount:</b>$
-          {(
-            productDetails.discountPercentage *
-            productDetails.price *
-            0.001
-          ).toFixed(2)}
+          <b>Discount Amount:</b>${returnDiscountAmount(productDetails)}
         </p>
         <p>
-          <b>Total Amount:</b>$
-          {(
-            productDetails.price *
-            (1 - productDetails.discountPercentage * 0.001)
-          ).toFixed(2)}
+          <b>Total Amount:</b>${returnTotal(productDetails)}
         </p>
       </CardBody>
       <CardFooter>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, FloatingLabel, Form, Modal } from "react-bootstrap";
+import { returnDiscountAmount, returnTotal } from "../utils/helper";
 
 const EditProduct = ({
   showPopupEdit,
@@ -11,7 +12,7 @@ const EditProduct = ({
   // console.log(editedProduct)
   return (
     <div>
-      <Modal show={showPopupEdit} onHide={handleCloseEdit}>
+      <Modal show={showPopupEdit} handleCloseEdit={handleCloseEdit}>
         <Modal.Header closeButton>Edit Product Form</Modal.Header>
         <Form>
           <FloatingLabel
@@ -61,20 +62,19 @@ const EditProduct = ({
             className="mb-3"
           >
             <Form.Control
-              type="number"
+              type="text"
               readOnly
-              placeholder="SubTotal"
               value={"$" + editedProduct.price}
             />
           </FloatingLabel>
           <FloatingLabel
             controlId="floatingDiscountPercentage"
-            label="Discount Percentage"
+            label="Discount Percentage (%)"
             className="mb-3"
           >
             <Form.Control
               type="text"
-              name="discountpercentage"
+              name="discountPercentage"
               placeholder="Discount Percentage"
               value={editedProduct.discountPercentage}
               onChange={handleEditChange}
@@ -89,7 +89,7 @@ const EditProduct = ({
               type="text"
               readOnly
               placeholder="Discount Amount"
-              value={editedProduct.discountPercentage}
+              value={"$" + returnDiscountAmount(editedProduct)}
             />
           </FloatingLabel>
           <FloatingLabel
@@ -101,16 +101,14 @@ const EditProduct = ({
               type="text"
               readOnly
               placeholder="Total"
-              value={editedProduct.discountPercentage}
+              value={"$" + returnTotal(editedProduct)}
             />
           </FloatingLabel>
         </Form>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            //   onClick={handleCloseEdit}
-          >
-            Close
+          <Button variant="danger" 
+          onClick={handleCloseEdit}>
+            Cancel
           </Button>
           <Button variant="primary" onClick={(e) => editProductHandler(e)}>
             Edit Product
