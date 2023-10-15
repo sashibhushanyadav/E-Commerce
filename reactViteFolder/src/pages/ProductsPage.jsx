@@ -8,6 +8,7 @@ import { Button, FloatingLabel, Spinner } from "react-bootstrap";
 import AddProduct from "../components/AddProduct";
 import EditProduct from "../components/EditProduct";
 import { Form } from "react-bootstrap";
+import ViewProduct from "../components/ViewProduct";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -21,7 +22,9 @@ const ProductsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showModel, setShowModel] = useState(false);
   const [showModelEdit, setShowModelEdit] = useState(false);
+  const [showModelView, setShowModelView] = useState(false);
   const [editedProduct2, setEditedProduct2] = useState({});
+  const [viewedProduct2, setViewedProduct2] = useState({});
   // console.log(import.meta.env.VITE_BACKEND_URL)
   const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -69,6 +72,16 @@ const ProductsPage = () => {
     setEditedProduct2(prod);
     setShowModelEdit(true);
   };
+  const viewButtonHandler = (e, id) => {
+    e.preventDefault();
+    const prod = products.find((product) => {
+      return product.id === id;
+    });
+    // console.log(prod)
+    setViewedProduct2(prod);
+    setShowModelView(true);
+  };
+  // console.log(viewButtonHandler())
   function handleEditProductChange(e) {
     // console.log(e.target.name,e.target.value)
     setEditedProduct2((prev) => {
@@ -86,6 +99,9 @@ const ProductsPage = () => {
   }
   function closeEditProductModel() {
     setShowModelEdit(false);
+  }
+  function closeViewProductModel(){
+    setShowModelView(false)
   }
 
   const addProductHandleChange = (e) => {
@@ -113,13 +129,13 @@ const ProductsPage = () => {
 
   const editedProductHandler = (e) => {
     e.preventDefault();
-    console.log("click", editedProduct2);
-    console.log(products);
+    // console.log("click", edit edProduct2);
+    // console.log(products);
 
     const updatedProd = products.map((product) => {
       return product.id === editedProduct2.id ? editedProduct2 : product;
     });
-    console.log(updatedProd);
+    // console.log(updatedProd);
     setProducts(updatedProd);
     setShowModelEdit(false);
   };
@@ -186,6 +202,7 @@ const ProductsPage = () => {
                   productDetails={product}
                   deleteHandler={deleteHandler}
                   editHandler={editButtonHandler}
+                  viewHandler={viewButtonHandler}
                 />
               );
             })}
@@ -202,6 +219,13 @@ const ProductsPage = () => {
             editedProduct={editedProduct2}
             handleEditChange={handleEditProductChange}
             editProductHandler={editedProductHandler}
+          />
+          <ViewProduct
+            showPopupView={showModelView}
+            handleCloseView={closeViewProductModel}
+            viewedProduct={viewedProduct2}
+            // handleEditChange={handleEditProductChange}
+            // editProductHandler={editedProductHandler}
           />
         </>
       )}

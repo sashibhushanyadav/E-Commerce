@@ -8,7 +8,12 @@ import {
 } from "react-bootstrap";
 import { returnDiscountAmount, returnTotal } from "../utils/helper";
 
-const ProductsComponent = ({ productDetails, deleteHandler, editHandler }) => {
+const ProductsComponent = ({
+  productDetails,
+  deleteHandler,
+  editHandler,
+  viewHandler,
+}) => {
   //   console.log('productDetails', productDetails)
   return (
     <Card className="w-25" style={{ height: "600px" }} key={productDetails.id}>
@@ -44,7 +49,11 @@ const ProductsComponent = ({ productDetails, deleteHandler, editHandler }) => {
         </p>
       </CardBody>
       <CardFooter>
-        <Button variant="info" className="me-1">
+        <Button
+          variant="info"
+          className="me-1"
+          onClick={(e) => viewHandler(e, productDetails.id)}
+        >
           View
         </Button>
         <Button
