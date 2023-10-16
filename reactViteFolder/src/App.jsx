@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import { ToastContainer, toast } from "react-toastify";
 import ProductsPage from "./pages/ProductsPage";
 import SecureRoute from "./routes/SecureRoute";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
         <Route path="/" element={<LoginPaga />} />
         <Route path="/signup" element={<SignUpPage />} />
         {/* <Route path='' element={<SecureRoute/>}> */}
-        {/* <Navbar /> */}
           <Route path="/quotes" element={<QuoteDisplay />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="*" element={<PageNotFound/>}/>
         
         {/* </Route> */}
       </Routes>
