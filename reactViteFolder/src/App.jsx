@@ -17,12 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPaga />} />
         <Route path="/signup" element={<SignUpPage />} />
-        {/* <Route path='' element={<SecureRoute/>}> */}
+        <Route path='' element={<SecureRoute/>}>
           <Route path="/quotes" element={<QuoteDisplay />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="*" element={<PageNotFound/>}/>
-        
-        {/* </Route> */}
+        </Route>
       </Routes>
       <ToastContainer />
     </>

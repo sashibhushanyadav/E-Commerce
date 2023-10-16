@@ -19,7 +19,7 @@ const LoginPage = () => {
     e.preventDefault();
     if (e.target.name === "email") {
       setEmail(e.target.value);
-    } else if (e.target.password === "password") {
+    } else if (e.target.name === "password") {
       setPassword(e.target.value);
     }
   };
@@ -36,7 +36,7 @@ const LoginPage = () => {
       .post("https://backend-mu-pied.vercel.app/users/login", data)
       .then((resp) => {
         if (resp.data.status) {
-          // localStorage.setItem("isLoggedIn", true);
+          sessionStorage.setItem("isLoggedIn", true);
 
           navigation("/products");
 
@@ -79,7 +79,7 @@ const LoginPage = () => {
             <input
               type="password"
               name="password"
-              onClick={loginHandler}
+              onChange={loginHandler}
               // or Call this onChange handler in within it
               // onChange={(e)=>{setPassword(e.target.value)}}
               className="bg-light text-dark"
