@@ -10,7 +10,7 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
-  // const signupHandler = (e) => {
+  // const signupSubmitHandler = (e) => {
   //   e.preventDefault();
   //   if(e.target.name==='fullName'){
   //     setFullName(e.target.value);

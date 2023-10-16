@@ -100,8 +100,8 @@ const ProductsPage = () => {
   function closeEditProductModel() {
     setShowModelEdit(false);
   }
-  function closeViewProductModel(){
-    setShowModelView(false)
+  function closeViewProductModel() {
+    setShowModelView(false);
   }
 
   const addProductHandleChange = (e) => {
@@ -168,6 +168,14 @@ const ProductsPage = () => {
         <Spinner animation="border" variant="dark" />
       ) : (
         <>
+          <div className="d-flex justify-content-between mb-2">
+            <div>
+              <h3>Menu</h3>
+            </div>
+            <div>
+              <Button variant="danger">Log Out</Button>
+            </div>
+          </div>
           <div className="d-flex justify-content-between mb-3">
             <Button variant="info" onClick={showProduct}>
               Add Products

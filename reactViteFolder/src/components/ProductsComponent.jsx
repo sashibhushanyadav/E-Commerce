@@ -25,13 +25,13 @@ const ProductsComponent = ({
       </CardHeader>
       <CardBody>
         <h4>
-          {productDetails.title.length > 5
-            ? productDetails.title.slice(0, 4) + "..."
+          {productDetails.title.length > 10
+            ? productDetails.title.slice(0, 9) + "..."
             : productDetails.title}
         </h4>
         <p>
-          {productDetails.description.length > 10
-            ? productDetails.description.slice(0, 9) + "..."
+          {productDetails.description.length > 45
+            ? productDetails.description.slice(0, 44) + "..."
             : productDetails.description}
         </p>
         <p>

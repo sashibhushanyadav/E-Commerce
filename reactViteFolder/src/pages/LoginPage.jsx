@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation=useNavigate()
+  const navigation = useNavigate();
 
   // or Call this onChange handler in within it
   // onChange={(e)=>{setEmail(e.target.value)}}
@@ -36,10 +36,9 @@ const LoginPage = () => {
       .post("https://backend-mu-pied.vercel.app/users/login", data)
       .then((resp) => {
         if (resp.data.status) {
-          
-          localStorage.setItem('isLoggedIn', true)
+          // localStorage.setItem("isLoggedIn", true);
 
-          navigation('/quotes')
+          navigation("/products");
 
           successToast(resp.data.message);
         }

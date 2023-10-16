@@ -19,7 +19,7 @@ const QuoteDisplay = () => {
     const { data } = await axios.get("https://dummyjson.com/quotes");
     console.log(data);
     const { quotes } = data;
-    console.log(quotes)
+    console.log(quotes);
 
     const qts = quotes.find((item) => item.id === id);
 
@@ -29,6 +29,15 @@ const QuoteDisplay = () => {
   };
   return (
     <div>
+      <div className="d-flex justify-content-between mb-3">
+        <div>
+          <h3>Menu</h3>
+        </div>
+        <div>
+          <Button variant="danger">Log Out</Button>
+        </div>
+      </div>
+      <div>
       <Card>
         <CardHeader>
           <h1>Quote Display</h1>
@@ -46,6 +55,7 @@ const QuoteDisplay = () => {
           </Button>
         </CardFooter>
       </Card>
+      </div>
     </div>
   );
 };
