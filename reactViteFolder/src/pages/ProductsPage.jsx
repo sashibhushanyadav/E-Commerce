@@ -9,6 +9,7 @@ import AddProduct from "../components/AddProduct";
 import EditProduct from "../components/EditProduct";
 import { Form } from "react-bootstrap";
 import ViewProduct from "../components/ViewProduct";
+import Navbar from "../components/Navbar";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -168,14 +169,7 @@ const ProductsPage = () => {
         <Spinner animation="border" variant="dark" />
       ) : (
         <>
-          <div className="d-flex justify-content-between mb-2">
-            <div>
-              <h3>Menu</h3>
-            </div>
-            <div>
-              <Button variant="danger">Log Out</Button>
-            </div>
-          </div>
+          <Navbar />
           <div className="d-flex justify-content-between mb-3">
             <Button variant="info" onClick={showProduct}>
               Add Products
@@ -232,8 +226,6 @@ const ProductsPage = () => {
             showPopupView={showModelView}
             handleCloseView={closeViewProductModel}
             viewedProduct={viewedProduct2}
-            // handleEditChange={handleEditProductChange}
-            // editProductHandler={editedProductHandler}
           />
         </>
       )}
